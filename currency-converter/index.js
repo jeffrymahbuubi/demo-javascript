@@ -1,4 +1,4 @@
-const moneyInIDR = 1_000_000;
+const moneyInIDR = prompt("Enter amount of IDR (Indonesia Rupiah): ");
 
 const dataCurrencies = [
   { name: "$NTD", rate: 506 },
@@ -15,7 +15,7 @@ for (let index = 0; index < dataCurrencies.length; index = index + 1) {
   const currency = dataCurrencies[index];
   const newCurrency = {
     name: `${currency.name}`,
-    value: moneyInIDR / currency.rate,
+    value: Number(moneyInIDR) / currency.rate,
   };
   dataConvertedMoneys[index] = newCurrency;
 }
