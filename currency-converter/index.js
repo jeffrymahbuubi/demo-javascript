@@ -1,39 +1,26 @@
-const idr = 1_000_000;
+const moneyInIDR = 1_000_000;
 
-const dataCurrency = [
-  {
-    name: "$NTD",
-    divisor: 506,
-  },
-  {
-    name: "$USD",
-    divisor: 15114,
-  },
-  {
-    name: "¥JPY",
-    divisor: 118,
-  },
-  {
-    name: "¥CNY",
-    divisor: 2254,
-  },
-  {
-    name: "€Euro",
-    divisor: 16389,
-  },
-  {
-    name: "£Pound sterling",
-    divisor: 18486,
-  },
+const dataCurrencies = [
+  { name: "$NTD", rate: 506 },
+  { name: "$USD", rate: 15114 },
+  { name: "¥JPY", rate: 118 },
+  { name: "¥CNY", rate: 2254 },
+  { name: "€Euro", rate: 16389 },
+  { name: "£Pound sterling", rate: 18486 },
 ];
 
-for (let index = 0; index < dataCurrency.length; index = index + 1) {
-  const currency = dataCurrency[index];
+const dataConvertedMoneys = [];
+
+for (let index = 0; index < dataCurrencies.length; index = index + 1) {
+  const currency = dataCurrencies[index];
   const newCurrency = {
     name: `${currency.name}`,
-    converted: idr / currency.divisor,
+    value: moneyInIDR / currency.rate,
   };
-  console.log(
-    `IDR ${idr} is equal to ${newCurrency.name} ${newCurrency.converted}`
-  );
+  dataConvertedMoneys[index] = newCurrency;
+}
+
+for (let index = 0; index < dataConvertedMoneys.length; index++) {
+  const money = dataConvertedMoneys[index];
+  console.log(`IDR ${moneyInIDR} is equal to ${money.name} ${money.value}`);
 }
