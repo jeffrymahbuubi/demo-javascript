@@ -5,30 +5,32 @@ const dataUsers = [
 ];
 
 const dataPosts = [
-  { username: "Bobby", timeline: "I'm tired learning Javascript" },
-  { username: "Tanya", timeline: "I love programming!!!" },
-  { username: "Daniel", timeline: "Logic is difficult!!!" },
+  { username: "Bobby", content: "I'm tired learning Javascript" },
+  { username: "Tanya", content: "I love programming!!!" },
+  { username: "Daniel", content: "Logic is difficult!!!" },
 ];
 
-function containsUppercase(username) {
-  return /[A-Z]/.test(username);
-}
-
-function convertToLowerCase(username) {
-  if (containsUppercase(username)) {
-    return username.toLowerCase();
-  } else {
-    return username;
+function displayPosts() {
+  for (let index = 0; index < dataPosts.length; index++) {
+    const post = dataPosts[index];
+    console.log(`${post.username}'s said ${post.content}.`);
   }
 }
 
-function isUserValid(username, password) {
+function signIn(usernameInput, passwordInput) {
+  if (isUserValid(usernameInput, passwordInput)) {
+    displayPosts();
+  } else {
+    alert("Sorry, wrong username and password");
+  }
+}
+
+function isUserValid(usernameInput, passwordInput) {
   for (let index = 0; index < dataUsers.length; index++) {
     const user = dataUsers[index];
-
     if (
-      user.username === convertToLowerCase(username) &&
-      user.password === password
+      user.username.toLowerCase() === usernameInput.toLowerCase() &&
+      user.password === passwordInput
     ) {
       return true;
     }
@@ -36,29 +38,13 @@ function isUserValid(username, password) {
   return false;
 }
 
-readNewsFeed = [];
+function runApp() {
+  const usernamePrompt = prompt("What's your username?");
+  const passwordPrompt = prompt("What's your password ");
 
-for (let index = 0; index < dataPosts.length; index++) {
-  const news = dataPosts[index];
-  const readNews = {
-    name: `${news.username}`,
-    posting: `${news.timeline}`,
-  };
-  readNewsFeed[index] = readNews;
-}
-
-function signIn(username, password) {
-  if (isUserValid(username, password)) {
-    for (let index = 0; index < readNewsFeed.length; index++) {
-      const news = readNewsFeed[index];
-      console.log(`${news.name}'s said ${news.posting}.`);
-    }
-  } else {
-    alert("Sorry, wrong username and password");
+  if (usernamePrompt && passwordPrompt) {
+    signIn(usernamePrompt, passwordPrompt);
   }
 }
 
-var userNamePrompt = prompt("What's your username?");
-var passwordPrompt = prompt("What's your password ");
-
-signIn(userNamePrompt, passwordPrompt);
+runApp();
