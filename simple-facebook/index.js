@@ -1,10 +1,10 @@
-var database = [
+const dataUsers = [
   { username: "jeffry", password: "jeffry123" },
   { username: "sally", password: "123" },
   { username: "ingrid", password: "777" },
 ];
 
-var newsFeed = [
+const dataPosts = [
   { username: "Bobby", timeline: "I'm tired learning Javascript" },
   { username: "Tanya", timeline: "I love programming!!!" },
   { username: "Daniel", timeline: "Logic is difficult!!!" },
@@ -23,10 +23,12 @@ function convertToLowerCase(username) {
 }
 
 function isUserValid(username, password) {
-  for (var i = 0; i < database.length; i++) {
+  for (let index = 0; index < dataUsers.length; index++) {
+    const user = dataUsers[index];
+
     if (
-      database[i].username === convertToLowerCase(username) &&
-      database[i].password === password
+      user.username === convertToLowerCase(username) &&
+      user.password === password
     ) {
       return true;
     }
@@ -36,8 +38,8 @@ function isUserValid(username, password) {
 
 readNewsFeed = [];
 
-for (let index = 0; index < newsFeed.length; index++) {
-  const news = newsFeed[index];
+for (let index = 0; index < dataPosts.length; index++) {
+  const news = dataPosts[index];
   const readNews = {
     name: `${news.username}`,
     posting: `${news.timeline}`,
