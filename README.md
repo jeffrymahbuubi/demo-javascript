@@ -9,3 +9,4 @@ This repository was made to showcase on simple projects made using JavaScript as
 The aim of the project is to **learn the fundamental of JavaScript**, the project done is listed below,
 
 - **Project 1**: Currency Converter
+- **Project 2**: Simple Facebook
