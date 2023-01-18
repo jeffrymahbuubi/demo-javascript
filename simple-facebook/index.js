@@ -1,5 +1,5 @@
 var database = [
-  { username: "jeffry", password: "B1u2u3b4i5" },
+  { username: "jeffry", password: "jeffry123" },
   { username: "sally", password: "123" },
   { username: "ingrid", password: "777" },
 ];
