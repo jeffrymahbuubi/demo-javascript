@@ -22,9 +22,23 @@ function isUserValid(username, password) {
   return false;
 }
 
+readNewsFeed = [];
+
+for (let index = 0; index < newsFeed.length; index++) {
+  const news = newsFeed[index];
+  const readNews = {
+    name: `${news.username}`,
+    posting: `${news.timeline}`,
+  };
+  readNewsFeed[index] = readNews;
+}
+
 function signIn(username, password) {
   if (isUserValid(username, password)) {
-    console.log(newsFeed);
+    for (let index = 0; index < readNewsFeed.length; index++) {
+      const news = readNewsFeed[index];
+      console.log(`${news.name}'s said ${news.posting}.`);
+    }
   } else {
     alert("Sorry, wrong username and password");
   }
