@@ -10,10 +10,22 @@ var newsFeed = [
   { username: "Daniel", timeline: "Logic is difficult!!!" },
 ];
 
+function containsUppercase(username) {
+  return /[A-Z]/.test(username);
+}
+
+function convertToLowerCase(username) {
+  if (containsUppercase(username)) {
+    return username.toLowerCase();
+  } else {
+    return username;
+  }
+}
+
 function isUserValid(username, password) {
   for (var i = 0; i < database.length; i++) {
     if (
-      database[i].username === username &&
+      database[i].username === convertToLowerCase(username) &&
       database[i].password === password
     ) {
       return true;
