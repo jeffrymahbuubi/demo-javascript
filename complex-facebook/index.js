@@ -26,14 +26,27 @@ function showDataPosts() {
   });
 }
 
+function showPosts() {
+  dataPosts.forEach((dataPosts) => {
+    console.log(`Name: ${dataPosts.username} posted ${dataPosts.content}`);
+  });
+}
+
 const searchFriends = dataPosts.filter((friends) => {
   return friends.status === "friend";
 });
 
 function displayPostsFriends() {
-  searchFriends.forEach((postFriend) => {
-    console.log(`Friends: ${postFriend.username} posted ${postFriend.content}`);
-  });
+  askUser = confirm("Show only friends post?");
+  if (askUser === true) {
+    searchFriends.forEach((postFriend) => {
+      console.log(
+        `Friends: ${postFriend.username} posted ${postFriend.content}`
+      );
+    });
+  } else {
+    showPosts();
+  }
 }
 
 function userRegistration() {
