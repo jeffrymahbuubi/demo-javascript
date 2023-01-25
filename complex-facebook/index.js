@@ -1,7 +1,5 @@
 const dataUsers = [{ username: "jeffry", password: "jeffry123" }];
 
-// status: 1 is friend
-// status: 0 is not friend
 const dataPosts = [
   {
     username: "Bobby",
@@ -20,47 +18,43 @@ const dataPosts = [
   },
 ];
 
-function showDataPosts() {
-  dataPosts.forEach((dataPosts) => {
-    alert(`Username: ${dataPosts.username}, Status: ${dataPosts.status}`);
-  });
-}
-
-function showPosts() {
-  dataPosts.forEach((dataPosts) => {
-    console.log(`Name: ${dataPosts.username} posted ${dataPosts.content}`);
-  });
-}
-
-const searchFriends = dataPosts.filter((friends) => {
-  return friends.status === "friend";
+const friendsPosts = dataPosts.filter((friend) => {
+  return friend.status === "friend";
 });
 
-function displayPostsFriends() {
-  askUser = confirm("Show only friends post?");
-  if (askUser === true) {
-    searchFriends.forEach((postFriend) => {
+function showAllUsers() {
+  dataPosts.forEach((post) => {
+    alert(`Username: ${post.username}, Status: ${post.status}`);
+  });
+}
+
+function displayFriendsPosts() {
+  const isShowFriendsPosts = confirm("Show only friendsPosts post?");
+  if (isShowFriendsPosts === true) {
+    friendsPosts.forEach((friendPost) => {
       console.log(
-        `Friends: ${postFriend.username} posted ${postFriend.content}`
+        `Friends: ${friendPost.username} posted ${friendPost.content}`
       );
     });
   } else {
-    showPosts();
+    dataPosts.forEach((post) => {
+      console.log(`Name: ${post.username} posted ${post.content}`);
+    });
   }
 }
 
-function userRegistration() {
-  const addUsername = prompt("Enter desired username:");
-  const addPassword = prompt("Enter desired password:");
-  addUser = {
-    username: addUsername,
-    password: addPassword,
+function registerUser() {
+  const username = prompt("Enter desired username:");
+  const password = prompt("Enter desired password:");
+  const user = {
+    username,
+    password,
   };
-  dataUsers.push(addUser);
+  dataUsers.push(user);
   runApp();
 }
 
-function isUserValid(usernameInput, passwordInput) {
+function validateUser(usernameInput, passwordInput) {
   for (let index = 0; index < dataUsers.length; index++) {
     const user = dataUsers[index];
     if (
@@ -73,28 +67,19 @@ function isUserValid(usernameInput, passwordInput) {
   return false;
 }
 
-function signIn() {
+function signInUser() {
   const usernameInput = prompt("What's your username?");
   const passwordInput = prompt("What's your password ");
-  if (isUserValid(usernameInput, passwordInput)) {
-    showDataPosts();
-    displayPostsFriends();
-  } else {
-    alert("Sorry, wrong username and password");
-  }
-}
 
-function isUserValid(usernameInput, passwordInput) {
-  for (let index = 0; index < dataUsers.length; index++) {
-    const user = dataUsers[index];
-    if (
-      user.username.toLowerCase() === usernameInput.toLowerCase() &&
-      user.password === passwordInput
-    ) {
-      return true;
-    }
+  const isUserValidated = validateUser(usernameInput, passwordInput);
+
+  if (!isUserValidated) {
+    alert("Sorry, wrong username and password");
+    // return null
   }
-  return false;
+
+  showAllUsers();
+  displayFriendsPosts();
 }
 
 function runApp() {
@@ -102,9 +87,9 @@ function runApp() {
     "Welcome to Complex Facebook, choose OK if you have registered, choose CANCEL to register"
   );
   if (askUser === true) {
-    signIn();
+    signInUser();
   } else {
-    userRegistration();
+    registerUser();
   }
 }
 
