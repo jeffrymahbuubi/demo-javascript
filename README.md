@@ -10,3 +10,9 @@ The aim of the project is to **learn the fundamental of JavaScript**, the projec
 
 - **Project 1**: Currency Converter
 - **Project 2**: Simple Facebook
+
+## Convention
+
+- function name = verb = kata kerja
+- variable/parameter name = noun = kata benda
+- singular (non-array) vs plural (array) = one value vs multiple values/items (array)
