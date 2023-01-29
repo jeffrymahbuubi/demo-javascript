@@ -11,6 +11,7 @@ The aim of the project is to **learn the fundamental of JavaScript**, the projec
 - **Project 1**: Currency Converter
 - **Project 2**: Simple Facebook
 - **Project 3**: Complex Facebook
+- **Project 4**: Simple To-Do-List App
 
 ## Convention
 
