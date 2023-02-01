@@ -1,7 +1,3 @@
-// Link Country By Currency Name
-urlCurrencyCode =
-  "https://country-api-jeffrymahbuubi.netlify.app/data/src/country-by-currency-code.json";
-
 // Link Country By Currency Code
 urlCurrencyName =
   "https://country-api-jeffrymahbuubi.netlify.app/data/src/country-by-currency-name.json";
@@ -13,17 +9,19 @@ urlConvertCurency =
 const fromCurrency = document.getElementById("from-currency");
 const toCurrency = document.getElementById("to-currency");
 
-// // Get Country Names From API
-// async function getCountriesName() {
-//   const proxyURL = "https://proxy-api-jeffrymahbuubi.netlify.app";
-//   const apiURL = urlCurrencyCode;
-//   try {
-//     const response = await fetch(proxyURL + apiURL);
-//     apiCountries = await response.json();
-//   } catch (error) {
-//     // Catch Error Here
-//     console.log(error);
-//   }
-// }
+// Get Country Names From API
+async function getCountriesName() {
+  const proxyUrl = "https://proxy-api-jeffrymahbuubi.netlify.app/";
+  const apiUrl =
+    "https://country-api-jeffrymahbuubi.netlify.app/data/src/country-by-currency-code.json";
+  try {
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      mode: "no-cors",
+    });
+    const apiCurrencies = await response.json();
+    console.log(apiCurrencies);
+  } catch (error) {}
+}
 
-console.log(localCurrencyCodes);
+getCountriesName();
