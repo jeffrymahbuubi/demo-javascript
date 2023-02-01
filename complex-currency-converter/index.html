@@ -20,6 +20,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="converter-container" id="converter-container">
+      <!-- Description -->
+      <div class="description">
+        <h1>Currency Converter</h1>
+        <p>Convert Currency to Another Currency</p>
+      </div>
+      <!-- Input -->
+      <div class="input-container">
+        <input type="text" id="amount" placeholder="Amount Money" />
+        <label for="from-currency" id="from-currency"> From Currency: </label>
+        <select name="currencies" id="currencies">
+          <option value="idr">Indonesian Rupiah</option>
+        </select>
+        <label for="to-currency" id="to-currency"> To Currency: </label>
+        <select name="currencies" id="currencies">
+          <option value="idr">United States Dollar</option>
+        </select>
+      </div>
+    </div>
     <!-- Script -->
     <script src="script.js"></script>
   </body>
