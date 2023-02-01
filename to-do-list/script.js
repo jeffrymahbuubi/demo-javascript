@@ -1,6 +1,7 @@
 // Declare Variable
 
-const listTodo = document.getElementById("list-todo");
+const todoList = document.getElementById("list-todo");
+const todoListContainer = document.getElementById("todo-container");
 const userInput = document.getElementById("user-input");
 const addButton = document.getElementById("add");
 
@@ -15,10 +16,15 @@ function createTodoItemElement() {
   const todoItem = document.createElement("li");
   const deleteBtn = createDeleteButton();
 
-  // Add list and delete button at the same time
-  todoItem.appendChild(document.createTextNode(userInput.value));
-  todoItem.appendChild(deleteBtn);
-  listTodo.appendChild(todoItem);
+  // Add todo item and delete button at the same time
+  todoItem.append(document.createTextNode(userInput.value));
+  todoItem.append(deleteBtn);
+
+  // Add todo item to todo list
+  todoList.append(todoItem);
+
+  // Prevent user to add empty todo-item after adding todo-item
+  userInput.value = "";
 
   // Delete list if delete button clicked
   deleteBtn.addEventListener("click", () => {
@@ -48,11 +54,15 @@ function createTodoItemAfterCheckLength() {
 
 function runApp() {
   addButton.addEventListener("click", createTodoItemAfterCheckLength);
-  userInput.addEventListener("submit", createTodoItemAfterCheckLength);
+  todoListContainer.addEventListener("submit", (event) => {
+    event.preventDefault();
+    createTodoItemAfterCheckLength();
+  });
 }
 
 runApp();
 
+// DONE Refractoring
 // const listTodo
 // const userInput
 // const addButton
@@ -64,6 +74,8 @@ runApp();
 // const deleteButton
 // Pisah dengan enter
 // div dibungkus dalam form
+
+// NOT DONE Refractoring
 // Bagaimana jika semua todosnya di deklrasi diatas
 //  const dataTodos = [
 //   {
@@ -72,3 +84,7 @@ runApp();
 //     done (class): true or false
 //   }
 // ]
+
+// NOTE
+// append bisa menambahkan banyak
+// appendChild hanya menambahkan satu saja
