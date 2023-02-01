@@ -13,15 +13,17 @@ urlConvertCurency =
 const fromCurrency = document.getElementById("from-currency");
 const toCurrency = document.getElementById("to-currency");
 
-// Get Country Names From API
-async function getCountriesName() {
-  const proxyURL = "https://proxy-api-jeffrymahbuubi.netlify.app";
-  const apiURL = urlCurrencyCode;
-  try {
-    const response = await fetch(proxyURL + apiURL);
-    apiCountries = await response.json();
-  } catch (error) {
-    // Catch Error Here
-    console.log(error);
-  }
-}
+// // Get Country Names From API
+// async function getCountriesName() {
+//   const proxyURL = "https://proxy-api-jeffrymahbuubi.netlify.app";
+//   const apiURL = urlCurrencyCode;
+//   try {
+//     const response = await fetch(proxyURL + apiURL);
+//     apiCountries = await response.json();
+//   } catch (error) {
+//     // Catch Error Here
+//     console.log(error);
+//   }
+// }
+
+console.log(localCurrencyCodes);
