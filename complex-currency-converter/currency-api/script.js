@@ -15,9 +15,10 @@ const toCurrency = document.getElementById("to-currency");
 
 // Get Country Names From API
 async function getCountriesName() {
+  const proxyURL = "https://proxy-api-jeffrymahbuubi.netlify.app";
   const apiURL = urlCurrencyCode;
   try {
-    const response = await fetch(apiURL);
+    const response = await fetch(proxyURL + apiURL);
     apiCountries = await response.json();
     console.log(apiCountries);
   } catch (error) {
