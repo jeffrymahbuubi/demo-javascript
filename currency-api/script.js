@@ -20,10 +20,10 @@ async function getCountriesName() {
   try {
     const response = await fetch(proxyURL + apiURL);
     apiCountries = await response.json();
-    console.log(apiCountries);
   } catch (error) {
     // Catch Error Here
+    console.log(error);
   }
 }
 
-getCountriesName();
+console.log("APA ADANYA");
